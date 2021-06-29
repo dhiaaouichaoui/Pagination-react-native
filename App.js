@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-
+import React from 'react';
+import { DataTable } from 'react-native-paper';
 //import all the components we are going to use
 import {
   SafeAreaView,
@@ -21,7 +21,7 @@ export default class App extends React.Component {
   loading: true,
   UserData: [],
   loadingExtraData: false,
-  page:3
+  page:0
   }
   }
   componentDidMount() {
@@ -48,6 +48,8 @@ export default class App extends React.Component {
         .catch((err) => {
           console.log(err.message);
         });
+        const from = this.state.page * this.state.UserData.per_page;
+        const to = Math.min((page + 1) * this.state.UserData.per_page, this.state.UserData.page);
   
   }
   render() {
